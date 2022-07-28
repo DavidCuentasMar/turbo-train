@@ -4,9 +4,38 @@ import java.util.List;
 public class Main{
 
     public static void main(String[] args){
-        //
+        List<Integer> z =  new ArrayList<Integer>();
+        z.add(1);
+        z.add(2);
+        z.add(3);
+        List<Integer> q =  new ArrayList<Integer>();
+        q.add(0);
+        q.add(1);
+        q.add(2);
+        System.out.println(circularArrayRotation(z,16,q));
     }
 
+    public static List<Integer> circularArrayRotation(List<Integer> a, int k, List<Integer> queries) {
+        Integer[] nums = new Integer[a.size()];
+        List<Integer> z =  new ArrayList<Integer>();
+        a.toArray(nums);
+        Integer limit = k % a.size() == 0 ? k : k % a.size();
+        System.out.println(limit);
+        for(Integer i=0; i<limit;i++){
+            Integer aux = nums[0];
+            for(Integer j=1; j <= a.size()-1;j++){
+                Integer aux2 = nums[j];
+                nums[j] = aux;
+                aux = aux2;
+            }
+            nums[0] = aux;
+        }
+        for (Integer f : queries) {
+            z.add(nums[f]);
+        }
+        return z;
+    }
+    
     public static List<Integer> gradingStudents(List<Integer> grades) {
         List<Integer> newGrades = new ArrayList<Integer>();
         for (Integer gradNum : grades) {
