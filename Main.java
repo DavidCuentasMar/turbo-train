@@ -1,19 +1,21 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Main{
 
     public static void main(String[] args){
-        Integer k = 2;
-        List<Integer> z =  new ArrayList<Integer>();
-        z.add(3);
-        z.add(4);
-        z.add(5);
-        List<Integer> q =  new ArrayList<Integer>();
-        q.add(1);
-        q.add(2);
-        System.out.println(circularArrayRotation(z,k,q));
+        System.out.println("GG");
+    }
+
+    public static String timeConversion(String s) {
+        String[] str = s.split(":");
+        if (s.contains("AM")){
+            str[0] = (Integer.parseInt(str[0]) == 12) ? "00" : str[0];
+        }else{
+            str[0] = (Integer.parseInt(str[0]) != 12) ? ""+(Integer.parseInt(str[0]) + 12) : "12";
+        }
+        str[0] = str[0].length() == 2 ? str[0] : "0"+str[0];
+        return str[0] +":"+str[1]+":"+str[2].substring(0,str[2].length()-2);    
     }
 
     public static List<Integer> circularArrayRotation(List<Integer> a, int k, List<Integer> queries) {
