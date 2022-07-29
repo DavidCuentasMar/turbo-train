@@ -1,39 +1,43 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main{
 
     public static void main(String[] args){
+        Integer k = 2;
         List<Integer> z =  new ArrayList<Integer>();
-        z.add(1);
-        z.add(2);
         z.add(3);
+        z.add(4);
+        z.add(5);
         List<Integer> q =  new ArrayList<Integer>();
-        q.add(0);
         q.add(1);
         q.add(2);
-        System.out.println(circularArrayRotation(z,16,q));
+        System.out.println(circularArrayRotation(z,k,q));
     }
 
     public static List<Integer> circularArrayRotation(List<Integer> a, int k, List<Integer> queries) {
+        k = k % a.size();
         Integer[] nums = new Integer[a.size()];
-        List<Integer> z =  new ArrayList<Integer>();
+        Integer[] nums2 = new Integer[a.size()];
+        List<Integer> finalNums = new ArrayList<Integer>();
         a.toArray(nums);
-        Integer limit = k % a.size() == 0 ? k : k % a.size();
-        System.out.println(limit);
-        for(Integer i=0; i<limit;i++){
-            Integer aux = nums[0];
-            for(Integer j=1; j <= a.size()-1;j++){
-                Integer aux2 = nums[j];
-                nums[j] = aux;
-                aux = aux2;
-            }
-            nums[0] = aux;
+        Integer counter = 0;
+        for(Integer i = Math.abs(a.size()-k); i<a.size(); i++){
+            nums2[counter]=nums[i];
+            counter++;
         }
-        for (Integer f : queries) {
-            z.add(nums[f]);
+
+        for(Integer i = 0; i< Math.abs(a.size()-k); i++){
+            nums2[counter]=nums[i];
+            counter++;
         }
-        return z;
+
+        for (Integer q : queries) {
+            finalNums.add(nums2[q]);
+        }
+
+        return  finalNums;
     }
     
     public static List<Integer> gradingStudents(List<Integer> grades) {
