@@ -4,8 +4,36 @@ public class Main{
 
     public static void main(String[] args){
         System.out.println("GG");
-        System.out.println(breakingRecords(Arrays.asList(10,5,20,20,4,5,2,25,1)).get(0));
-        System.out.println(breakingRecords(Arrays.asList(10,5,20,20,4,5,2,25,1)).get(1));
+    }
+
+    public static String misereNim(List<Integer> s) {
+        return "TODO";
+    }
+
+    public static int lonelyinteger(List<Integer> a) {
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (Integer num : a) {
+            if(map.get(num)!=null) map.put(num, map.get(num)+1);
+            if(map.get(num)==null) map.put(num, 1);
+        }
+        for (Integer num : map.keySet()) {
+            if(map.get(num) == 1) return num;
+        }
+        return 0;
+    }
+
+    public static int divisibleSumPairs(int n, int k, List<Integer> ar) {
+        // CURRENT CODE IS O(N2) HOWEVER THIS CAN BE SOLVED AS O(N) --- TODO
+        Integer counter=0;
+        for(Integer i = 0; i<ar.size(); i++){
+            for(Integer j = 1; j<ar.size(); j++){
+                if(i < j && (ar.get(i) + ar.get(j))% k==0){
+                    counter++;
+                }
+            }
+        }
+
+        return counter;
     }
 
     public static List<Integer> breakingRecords(List<Integer> scores) {
@@ -26,10 +54,6 @@ public class Main{
             }
         }
         return Arrays.asList(records);
-    }
-
-    public static String misereNim(List<Integer> s) {
-        // TODO
     }
 
     public static String timeConversion(String s) {
