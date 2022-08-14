@@ -4,10 +4,26 @@ public class Main{
 
     public static void main(String[] args){
         System.out.println("GG");
+        System.out.println(misereNim(Arrays.asList(1,1,1)));
+        System.out.println(misereNim(Arrays.asList(1,2,2)));
+        System.out.println(misereNim(Arrays.asList(1,1)));
+        System.out.println(misereNim(Arrays.asList(2,1,3)));
     }
 
     public static String misereNim(List<Integer> s) {
-        return "TODO";
+        if(s.size()  == 1){
+            return s.get(0) > 1 ? "First" : "Second";
+        }
+        Integer sum = 0;
+        Integer xorCount=0;
+        for (Integer num : s) {
+            xorCount = xorCount ^ num;
+            sum += num;
+        }
+        if(sum == s.size()) {
+            return sum % 2 == 0 ? "First" : "Second";
+        }
+        return xorCount > 0 ? "First" : "Second";
     }
 
     public static int lonelyinteger(List<Integer> a) {
