@@ -4,6 +4,26 @@ public class Main{
 
     public static void main(String[] args){
         System.out.println("GG");
+        int f[] = new int[2];
+        f[0] = 0;
+        f[1] = 4;
+        System.out.println(flatlandSpaceStations(5, f));
+    }
+
+    static int flatlandSpaceStations(int n, int[] c) {
+        Integer gmin = 0;
+        for (int i = 0; i < n; i++) {
+            Integer lmin = n;
+            for (int j = 0; j < c.length; j++) {
+                if(Math.abs(i - c[j])<lmin){
+                    lmin = Math.abs(i - c[j]);
+                }
+            }
+            if(gmin<lmin){
+                gmin = lmin;
+            }
+        }
+        return gmin;
     }
 
     public static int migratoryBirdsOk(List<Integer> arr) {
