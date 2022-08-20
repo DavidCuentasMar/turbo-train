@@ -4,7 +4,24 @@ public class Main{
 
     public static void main(String[] args){
         System.out.println("GG");
-        System.out.println(birthday(Arrays.asList(1,2,1,3,2),3,2));
+        System.out.println(countingValleys(8, "UDDDUDUU"));
+    }
+
+    public static int countingValleys(int steps, String path) {
+        steps = 0;
+        Integer f=0;
+        for (int i = 0; i < path.length(); i++) {
+            if(path.charAt(i) == 'U'){
+                f++;
+                if(f==0){
+                    steps++;
+                }
+            }else{
+                f--;
+            }
+
+        }
+        return steps;
     }
 
     public static int birthday(List<Integer> s, int d, int m) {
