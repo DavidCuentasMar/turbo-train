@@ -4,7 +4,67 @@ public class Main{
 
     public static void main(String[] args){
         System.out.println("GG");
-        System.out.println(countingValleys(8, "UDDDUDUU"));
+    }
+
+    public static int migratoryBirdsOk(List<Integer> arr) {
+        int counter[] = new int[6];
+        int result = 1; int max = 0;
+        for (int i = 0; i < arr.size(); i++) {
+            counter[arr.get(i)]++;
+        }
+
+        for (int i = 1; i <= 5; i++) {
+            if (counter[i] > max) {
+                result = i;
+                max = counter[i];
+            }
+        }
+
+        return result;
+    }
+    
+    public static int migratoryBirdsNOK2(List<Integer> arr) {
+        HashMap<Integer,Integer> map= new HashMap<Integer,Integer>();
+        Integer c = -1;
+        Integer minId = arr.get(0);
+        for (Integer num : arr) {
+            if(map.get(num) == null){
+                map.put(num, 0);
+            }
+            map.put(num, map.get(num)+1);
+            if(map.get(num)>c || map.get(num) == c && num < minId){
+                minId = num;
+                c = map.get(num);
+            }
+        }
+        return minId;
+    }
+
+    public static int migratoryBirdsNOK(List<Integer> arr) {
+            HashMap<Integer,Integer> map= new HashMap<Integer,Integer>();
+            Integer c = 0;
+            Integer minId=null;
+            for (Integer num : arr) {
+                if(map.get(num) == null){
+                    map.put(num, 0);
+                }
+                map.put(num, map.get(num)+1);
+                if (map.get(num) > c){
+                    c = map.get(num);
+                }
+            }
+    
+            for (Integer num : map.keySet()) {
+                if(map.get(num)==c){
+                    if (minId == null){
+                        minId = num;
+                    }
+                    else if(num < minId){
+                        minId = num;
+                    }
+                }
+            }
+            return minId;
     }
 
     static int solveMeFirst(int a, int b) {
