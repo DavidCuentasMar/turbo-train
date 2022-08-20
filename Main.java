@@ -4,10 +4,29 @@ public class Main{
 
     public static void main(String[] args){
         System.out.println("GG");
-        System.out.println(misereNim(Arrays.asList(1,1,1)));
-        System.out.println(misereNim(Arrays.asList(1,2,2)));
-        System.out.println(misereNim(Arrays.asList(1,1)));
-        System.out.println(misereNim(Arrays.asList(2,1,3)));
+        System.out.println(birthday(Arrays.asList(1,2,1,3,2),3,2));
+    }
+
+    public static int birthday(List<Integer> s, int d, int m) {
+        Integer flag = 0;
+        Integer sum = 0;
+        Integer counter = 0;
+        Integer p = 0;
+        Integer mn = m;
+        while(mn <= s.size()){
+            for(Integer i = flag; i<mn; i++){
+                sum += s.get(i);
+                counter++;
+            }
+            if(sum == d && counter == m){
+                p ++;
+            }
+            sum = 0;
+            counter = 0;
+            flag++;
+            mn++;
+        }
+        return p;
     }
 
     public static String misereNim(List<Integer> s) {
