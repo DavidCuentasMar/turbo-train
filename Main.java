@@ -7,6 +7,10 @@ public class Main{
         System.out.println(countingValleys(8, "UDDDUDUU"));
     }
 
+    static int solveMeFirst(int a, int b) {
+        return a + b;
+    }
+
     public static int countingValleys(int steps, String path) {
         steps = 0;
         Integer f=0;
