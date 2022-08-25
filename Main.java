@@ -10,6 +10,11 @@ public class Main{
         System.out.println(flatlandSpaceStations(5, f));
     }
 
+    string dayOfProgrammer(int year) {
+
+    }
+    
+    
     static int flatlandSpaceStations(int n, int[] c) {
         Integer gmin = 0;
         for (int i = 0; i < n; i++) {
